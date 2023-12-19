@@ -7,7 +7,7 @@ namespace RuStore.Review {
 
     public class RuStoreReviewManager {
 
-        public static string PluginVersion = "0.1.6";
+        public static string PluginVersion = "0.1.7";
 
         private static RuStoreReviewManager _instance;
         private static bool _isInstanceInitialized;
