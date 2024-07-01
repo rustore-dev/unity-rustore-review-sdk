@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/RuStoreReviewExample/Scenes/ReviewSampleScene.unity
+    guid: f80757b3950337a4699f9e6e3fe342ea
   m_configObjects: {}
