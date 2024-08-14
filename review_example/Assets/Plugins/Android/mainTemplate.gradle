@@ -4,7 +4,7 @@ apply plugin: 'com.android.library'
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 // Android Resolver Dependencies Start
-    implementation 'ru.rustore.sdk:review:6.+' // Assets/RuStoreSDK/Review/Editor/ReviewDependencies.xml:7
+    implementation 'ru.rustore.sdk:review:6.1.0' // Assets/RuStoreSDK/Editor/Review/ReviewDependencies.xml:7
 // Android Resolver Dependencies End
 **DEPS**}
 
