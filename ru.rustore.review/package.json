@@ -1,0 +1,30 @@
+{
+  "name": "ru.rustore.review",
+  "version": "10.5.1",
+  "displayName": "RuStore Review",
+  "description": "RuStore SDK for connecting reviews and ratings",
+  "unity": "6000.0",
+  "documentationUrl": "https://www.rustore.ru/help/sdk/reviews-ratings/unity",
+  "changelogUrl": "https://gitflic.ru/project/rustore/unity-rustore-review-sdk/blob/?file=ru.rustore.review%2FCHANGELOG.md",
+  "licensesUrl": "https://gitflic.ru/project/rustore/unity-rustore-review-sdk/blob?file=MIT-LICENSE.txt",
+  "keywords": [
+    "rustore",
+    "review",
+    "ratings"
+  ],
+  "dependencies": {
+    "ru.rustore.core": "10.5.0"
+  },
+  "author": {
+    "name": "RuStore",
+    "email": "support@rustore.ru",
+    "url": "https://www.rustore.ru/developer"
+  },
+  "samples": [
+    {
+      "displayName": "RuStore Review Example",
+      "description": "Contains sample RuStore Review",
+      "path": "Samples~/RuStoreReviewExample"
+    }
+  ]
+}

@@ -1,0 +1,2 @@
+-keep class ru.rustore.unitysdk.review.** { *; }
+-keep interface ru.rustore.unitysdk.review.** { *; }

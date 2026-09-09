@@ -1,57 +1,117 @@
-## RuStore Unity плагин для оценок и отзывов
+<!-- ── Language switch (RU active) ──────────────────────────────────── -->
+<div align="left" style="margin:0 0 14px 0;">
 
-### [🔗 Документация разработчика](https://www.rustore.ru/help/sdk/reviews-ratings/unity/)
+  <span style="display:inline-block;
+               padding:.28rem .6rem;
+               border:1px solid rgba(0,0,0,.18);
+               border-radius:10px 0 0 10px;
+               font-weight:400;
+               font-size:12px;
+               letter-spacing:.06em;
+               color:#111827;
+               background:linear-gradient(180deg,#e9edf2,#ffffff);
+               box-shadow:inset 0 2px 6px rgba(0,0,0,.10);">
+    RU
+  </span><span style="display:inline-block;
+               margin-left:-1px;
+               padding:.28rem .6rem;
+               border:1px solid rgba(0,0,0,.14);
+               border-radius:0 10px 10px 0;
+               font-weight:400;
+               font-size:12px;
+               letter-spacing:.06em;
+               background:linear-gradient(180deg,#ffffff,#f3f4f6);
+               box-shadow:0 1px 0 rgba(0,0,0,.06);">
+    [EN][en]
+  </span>
+
+</div>
+<!-- ────────────────────────────────────────────────────────────────── -->
+
+> ⚠️ Не используйте кнопку "Код → Скачать" на сайте GitFlic – этот метод не загружает файлы из Git LFS. [Инструкция по клонированию](README_CLONE.md).
+
+### Unity-плагин RuStore для оценок и отзывов
+
+#### [🔗 Документация разработчика][10]
 
 Плагин “RuStoreReviewManager” позволяет пользователю оставить оценку и отзыв о вашем приложении в RuStore, не выходя из приложения. 
 
-Репозиторий содержит плагины “RuStoreReviewManager” и “RuStoreCommon”, а также демонстрационное приложение с примерами использования и настроек. Поддерживаются версии Unity 2022+.
+Репозиторий содержит плагины **RuStoreReviewManager** и **RuStoreCore**, а также демонстрационное приложение с примерами использования и настроек. Поддерживаются версии Unity 6000+.
 
+#### Сборка примера приложения
 
-### Сборка примера приложения
+Вы можете ознакомиться с демонстрационным приложением, содержащим представление работы всех методов sdk:
+- [review_example](https://gitflic.ru/project/rustore/unity-rustore-review-sdk/file?file=review_example) — демонстрационный проект на Unity 6000.0.66f2 (может быть автоматически сконвертирован на более поздние версии Unity).
 
-Вы можете ознакомиться с демонстрационным приложением содержащим представление работы всех методов sdk:
-- [README](review_example/README.md)
-- [review_example](https://gitflic.ru/project/rustore/unity-rustore-review-sdk/file?file=review_example)
+#### Подключение в проект
 
+**Из сетевого расположения (рекомендуется)**
 
-### Установка плагина в свой проект
+Пакеты RuStore публикуются в npm-registry и подключаются к проекту через Package Manager без ручного скачивания архивов.
 
-1. Импортируйте пакет Example/RuStoreReviewSDKExample.unitypackage в проект Unity.
+1. Откройте настройки: **Edit → Project Settings → Package Manager**.
+2. В разделе **Scoped Registries** нажмите **+** и заполните поля:
+   - **Name** — `RuStore Nexus`.
+   - **URL** — `https://nexus-external.rustore.ru/repository/npm-unity-rustore-exposed/`.
+   - **Scopes** — `ru.rustore`.
+3. Откройте **Window → Package Manager** — в списке источников появится реестр **RuStore Nexus**.
+4. Выберите **RuStore Nexus** и установите пакет `ru.rustore.review` кнопкой **Install**. Зависимость `ru.rustore.core` установится автоматически.
 
-2. Откройте настройки проекта: Edit → Project Settings → Player → Android Settings.
+**Из локального расположения**
 
-3. В pазделе Publishing Settings: включите настройки Custom Main Manifest, Custom Main Gradle Template, Custom Gradle Properties Template. 
+**Установка через Package Manager**
 
-4. В разделе Other Settings: настройте package name, Minimum API Level = 24, Target API Level = 34.
+1. Для подключения скачайте со страницы [релизов][20] пакеты:
+   - `ru.rustore.core-version.tgz`.
+   - `ru.rustore.review-version.tgz`.
+2. Импортируйте пакеты в проект через **Package Manager** (**Window → Package Manager → __+__ → Add package from tarball...**).
 
-5. Откройте настройки External Dependency Manager: Assets → External Dependency Manager → Android Resolver → Settings. Включите настройки Use Jetifier, Patch mainTemplate.gradle, Patch gradleTemplate.properties.
+**Установка через \*.unitypackage**
 
-6. Обновите зависимости проекта: Assets → External Dependency Manager → Android Resolver → Force Resolve.
+1. Скачайте файл `RuStoreUnityReviewSDK-version.unitypackage` со страницы [релизов][20].
+2. Импортируйте его в проект (**Assets → Import Package → Custom Package...**).
 
+**Клонирование репозитория**
 
-### Пересборка плагина
+1. Для установки из исходного кода воспользуйтесь [инструкцией по клонированию](README_CLONE.md).
 
-Если вам необходимо изменить код библиотек плагинов, вы можете внести изменения и пересобрать подключаемые .aar файлы.
+Для каждого артефакта в релизе доступны файлы контрольных сумм (`.sha256`) и цифровой подписи (`.sig`), которые могут использоваться для проверки целостности и подлинности артефакта после скачивания.
 
-1. Откройте в вашей IDE проект Android из папки _“android_libraries”_.
+> **Подсказка**
+>
+> Если вы используете операционную систему macOS, измените настройки утилиты архивации. В настройках **Archive Utility** снимите флажок **Keep expanding if possible**. В противном случае архив проекта будет скачан некорректно.
 
-2. Выполните сборку проекта командой gradle assemble.
+#### Настройка проекта
 
-При успешном выполнении сборки в папках _“review_example / Assets / RuStoreSDK / Review / Android”_ и _“review_example / Assets / RuStoreSDK / Common / Android”_ будут обновлены файлы:
-- RuStoreUnityReview.aar
-- RuStoreUnityCore.aar
+Для корректной обработки зависимостей SDK выполните следующие настройки.
 
+1. Откройте настройки проекта: **Edit → Project Settings → Player → Android Settings**.
+2. В разделе **Publishing Settings** включите настройки:
+   - Custom Main Manifest.
+   - Custom Main Gradle Template.
+   - Custom Gradle Properties Template.
+3. В разделе **Other Settings** настройте:
+   - Package name.
+   - Minimum API Level = 24.
+   - Target API Level = 34.
 
-### История изменений
+#### Подключение зависимостей
+
+После установки обновите зависимости проекта с помощью [**External Dependency Manager**](README_EDM.md): **Assets → External Dependency Manager → Android Resolver → Force Resolve**.
+
+#### История изменений
 
 [CHANGELOG](CHANGELOG.md)
 
+#### Условия распространения
 
-### Условия распространения
+Данное программное обеспечение, включая исходные коды, бинарные библиотеки и другие файлы, распространяется под лицензией MIT. Информация о лицензировании доступна в документе [MIT-LICENSE](MIT-LICENSE.txt).
 
-Данное программное обеспечение, включая исходные коды, бинарные библиотеки и другие файлы распространяется под лицензией MIT. Информация о лицензировании доступна в документе [MIT-LICENSE](MIT-LICENSE.txt).
+#### Техническая поддержка
 
+Дополнительная помощь и инструкции доступны в [документации RuStore](https://www.rustore.ru/help/) и по электронной почте support@rustore.ru.
 
-### Техническая поддержка
+[10]: https://www.rustore.ru/help/sdk/reviews-ratings/unity/10-5-1
+[20]: https://gitflic.ru/project/rustore/unity-rustore-review-sdk/release
 
-Дополнительная помощь и инструкции доступны на странице [rustore.ru/help/](https://www.rustore.ru/help/) и по электронной почте [support@rustore.ru](mailto:support@rustore.ru).
+[en]: README.en.md

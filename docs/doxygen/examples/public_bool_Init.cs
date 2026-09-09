@@ -1,0 +1,1 @@
+bool isInitialized = RuStoreReviewManager.Instance.Init();

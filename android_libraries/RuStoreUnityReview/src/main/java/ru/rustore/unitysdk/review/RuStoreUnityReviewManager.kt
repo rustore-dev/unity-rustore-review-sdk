@@ -18,13 +18,13 @@ object RuStoreUnityReviewManager {
             context = PlayerProvider.getCurrentActivity().application,
             internalConfig = mapOf("type" to metricType)
         )
-        isInitialized = true;
+        isInitialized = true
     }
 
     fun requestReviewFlow(listener: ReviewResponseListener) {
         if (!isInitialized) {
             listener.OnFailure(RuStoreException("Unknown error"))
-            return;
+            return
         }
 
         reviewManager.requestReviewFlow()
@@ -37,12 +37,15 @@ object RuStoreUnityReviewManager {
     fun launchReviewFlow(listener: ReviewResponseListener) {
         if (!isInitialized) {
             listener.OnFailure(RuStoreException("Unknown error"))
-            return;
+            return
         }
 
         reviewInfo?.let {
-            reviewManager.launchReviewFlow(reviewInfo = it).addOnSuccessListener { listener.OnSuccess() }
+            reviewManager.launchReviewFlow(reviewInfo = it)
+                .addOnSuccessListener { listener.OnSuccess() }
                 .addOnFailureListener { throwable -> listener.OnFailure(throwable) }
+        } ?: run {
+            listener.OnFailure(RuStoreException("Review info not available. Call requestReviewFlow first."))
         }
     }
 }
