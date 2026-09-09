@@ -1,0 +1,9 @@
+<dependencies>
+  <androidPackages>
+    <androidPackage spec='ru.rustore.sdk:review:10.5.1'>
+      <repositories>
+        <repository>https://nexus-external.rustore.ru/repository/maven-rustore-exposed</repository>
+      </repositories>
+    </androidPackage>
+  </androidPackages>
+</dependencies>

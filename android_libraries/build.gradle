@@ -1,18 +1,20 @@
 ext {
-    destination_project = '../review_example'
-    rustore_review_version = '6.1.0'
-    rustore_core_version = rustore_review_version
-    rustore_sdk_type = ''
-    sdk_version_code = 1
+    rustore_review_version = '10.5.1'
+    sdk_version_code = 100501
+
+    destination_project = '../ru.rustore.review'
+
+    sdk_review_dependency = "ru.rustore.sdk:review:$rustore_review_version"
+    sdk_maven_repos = 'https://nexus-external.rustore.ru/repository/maven-rustore-exposed'
 }
 buildscript {
-    ext.kotlin_version = "1.9.0"
+    ext.kotlin_version = "1.9.25"
     repositories {
         google()
         mavenCentral()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:4.2.2'
+        classpath 'com.android.tools.build:gradle:8.13.2'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
 
         // NOTE: Do not place your application dependencies here; they belong
@@ -25,11 +27,11 @@ allprojects {
         google()
         mavenCentral()
         maven {
-            url = uri("https://artifactory-external.vkpartner.ru/artifactory/maven")
+            url = uri(sdk_maven_repos)
         }
     }
 }
 
-task clean(type: Delete) {
-    delete rootProject.buildDir
+tasks.register('clean', Delete) {
+    delete rootProject.layout.buildDirectory
 }
